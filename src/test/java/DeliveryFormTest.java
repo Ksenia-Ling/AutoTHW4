@@ -22,6 +22,23 @@ public class DeliveryFormTest {
     }
 
     @Test
+    void PathWithCityAndDateChoosingTest() {
+        {
+            open("http://localhost:9999");
+            SelenideElement form = $(".form");
+            form.$("[data-test-id=city] input").setValue("Са");
+            $$(".menu-item__control").find(exactText("Санкт-Петербург")).click();
+            form.$(".input__icon").click();
+            $$(".calendar__day").find(exactText("20")).click();
+            form.$("[data-test-id=name] input").setValue("Козырева Ксения");
+            form.$("[data-test-id=phone] input").setValue("+79215555555");
+            form.$("[data-test-id=agreement]").click();
+            form.$$("[role=button]").find(exactText("Забронировать")).click();
+            $(withText("Встреча успешно забронирована на")).waitUntil(visible, 15000);
+        }
+    }
+
+    @Test
     void EmptyCityTest() {
         {
             open("http://localhost:9999");
