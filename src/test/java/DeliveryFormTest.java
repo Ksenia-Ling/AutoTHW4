@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class DeliveryFormTest {
     @Test
-    void HappyPathTest() {
+    void CardRequestSuccessTest() {
         {
             open("http://localhost:9999");
             SelenideElement form = $(".form");
