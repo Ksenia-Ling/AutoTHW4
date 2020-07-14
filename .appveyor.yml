@@ -1,5 +1,7 @@
 image: Ubuntu1804
 
+stack: jdk 11
+
 branches:
   only:
     - master
